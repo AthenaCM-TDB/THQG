@@ -75,6 +75,75 @@ footer{text-align:center;color:var(--mute);font-size:13px;padding:28px 20px 44px
 .pt{font-size:20px;font-weight:800;margin:28px 0 10px}
 .num{font-size:clamp(56px,10vw,110px);font-weight:900;line-height:1}
 .bar{border-left:6px solid var(--y);padding-left:16px}
+
+/* === VISUAL ENHANCEMENT LAYER: no copy/content edits === */
+:root{--fx-ease:cubic-bezier(.2,.75,.25,1);--fx-shadow:0 18px 48px rgba(18,18,18,.09);--fx-line:rgba(20,20,20,.09)}
+html{scroll-behavior:smooth;scroll-padding-top:28px}
+body{overflow-x:clip}
+::selection{background:var(--y,#ffe100);color:#141414}
+.fx-progress{position:fixed;z-index:9999;inset:0 auto auto 0;width:100%;height:3px;pointer-events:none;background:transparent}
+.fx-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#141414,var(--y,#ffe100));box-shadow:0 0 14px rgba(255,225,0,.65);transform-origin:left center}
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;z-index:-1;pointer-events:none;border-radius:50%;will-change:transform}
+.hero:before{width:min(42vw,460px);height:min(42vw,460px);right:-8%;top:-34%;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.78),rgba(255,255,255,.12) 48%,transparent 70%);animation:fx-float 13s ease-in-out infinite}
+.hero:after{width:min(28vw,320px);height:min(28vw,320px);left:-8%;bottom:-45%;border:1px solid rgba(20,20,20,.13);box-shadow:0 0 0 24px rgba(255,255,255,.06),0 0 0 48px rgba(20,20,20,.035);animation:fx-float 17s ease-in-out infinite reverse}
+.hero>*{position:relative}
+.hero h1{text-wrap:balance;text-shadow:0 1px 0 rgba(255,255,255,.12)}
+.hero .btn,.btn{position:relative;overflow:hidden;transition:transform .28s var(--fx-ease),box-shadow .28s var(--fx-ease),background-color .28s ease}
+.hero .btn:before,.btn:before{content:"";position:absolute;inset:-20% auto -20% -45%;width:28%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.24),transparent);transition:left .65s var(--fx-ease);pointer-events:none}
+.hero .btn:hover,.btn:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(20,20,20,.18)}
+.hero .btn:hover:before,.btn:hover:before{left:130%}
+.card,.stat,.step,.quote,.loop,.layer,.cta,.table-wrap{transition:transform .35s var(--fx-ease),box-shadow .35s var(--fx-ease),border-color .35s ease,background-color .35s ease}
+.card{position:relative;isolation:isolate;overflow:hidden}
+.card:after{content:"";position:absolute;inset:0;z-index:-1;opacity:0;background:radial-gradient(360px circle at var(--fx-x,50%) var(--fx-y,0%),rgba(255,225,0,.17),transparent 58%);transition:opacity .35s ease;pointer-events:none}
+.card:hover{transform:translateY(-5px);box-shadow:var(--fx-shadow);border-color:rgba(190,160,0,.34)}
+.card:hover:after{opacity:1}
+.stat:hover,.step:hover{transform:translateY(-4px);box-shadow:var(--fx-shadow)}
+section{position:relative}
+section:not(.hero):not(.dark):nth-of-type(even):before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 95% 12%,rgba(255,225,0,.10),transparent 38%)}
+.tag{transition:transform .25s ease,box-shadow .25s ease}
+.tag:hover{transform:translateY(-2px);box-shadow:0 5px 14px rgba(20,20,20,.08)}
+.quote,.loop{position:relative;overflow:hidden}
+.quote:before,.loop:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--y,#ffe100)}
+footer{position:relative;overflow:hidden}
+.fx-reveal{opacity:1;transform:none}
+.fx-ready .fx-reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--fx-ease),transform .7s var(--fx-ease)}
+.fx-ready .fx-reveal.fx-visible{opacity:1;transform:translateY(0)}
+.fx-ready .fx-reveal[data-fx-delay="1"]{transition-delay:80ms}
+.fx-ready .fx-reveal[data-fx-delay="2"]{transition-delay:150ms}
+.fx-ready .fx-reveal[data-fx-delay="3"]{transition-delay:220ms}
+.fx-top{position:fixed;right:20px;bottom:20px;z-index:999;display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(20,20,20,.12);border-radius:50%;background:var(--y,#ffe100);color:#141414;box-shadow:0 8px 24px rgba(0,0,0,.16);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s ease,transform .25s ease,visibility .25s ease}
+.fx-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+.fx-top:hover{transform:translateY(-3px)}
+.fx-top svg{width:19px;height:19px}
+@keyframes fx-float{0%,100%{transform:translate3d(0,0,0) rotate(0deg)}50%{transform:translate3d(0,16px,0) rotate(5deg)}}
+@media(max-width:640px){.hero:before{width:65vw;height:65vw;right:-24%;top:-18%}.hero:after{width:46vw;height:46vw;left:-20%;bottom:-28%}.fx-top{right:13px;bottom:13px;width:42px;height:42px}.card:hover{transform:translateY(-2px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.fx-ready .fx-reveal{opacity:1;transform:none}}
+
+
+/* National Brand: editorial premium, formal and confident */
+.hero{background-image:radial-gradient(ellipse at 88% 12%,rgba(255,255,255,.72),transparent 30%),linear-gradient(120deg,#ffe100 0%,#ffea55 50%,#fff8c7 100%)}
+.hero h1{letter-spacing:-.05em}
+.dark{position:relative;overflow:hidden}
+.dark:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 90% 0%,rgba(255,225,0,.12),transparent 38%),linear-gradient(115deg,transparent 55%,rgba(255,255,255,.025))}
+.table-wrap{overflow:auto;border-radius:14px;box-shadow:0 12px 36px rgba(20,20,20,.07)}
+
+</style>
+<style id="fx-action-styles">
+/* Persistent product actions: available throughout the page and repeated at the end. */
+.fx-action-dock{position:fixed;z-index:1000;right:22px;bottom:22px;display:flex;align-items:center;gap:10px;padding:9px;background:rgba(17,17,17,.88);border:1px solid rgba(255,255,255,.16);border-radius:16px;box-shadow:0 12px 36px rgba(0,0,0,.24);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.fx-action-dock a,.fx-end-actions a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 17px;border-radius:10px;text-decoration:none!important;font-weight:750;font-size:14px;line-height:1.2;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.fx-action-dock a:hover,.fx-end-actions a:hover{transform:translateY(-2px)}
+.fx-action-profile{background:#f6d84a!important;color:#171717!important;box-shadow:0 4px 14px rgba(246,216,74,.18)}
+.fx-action-quote{background:transparent!important;color:#fff!important;border:1px solid rgba(255,255,255,.32)!important}
+.fx-action-quote:hover{background:rgba(255,255,255,.1)!important}
+.fx-action-dock a:focus-visible,.fx-end-actions a:focus-visible{outline:3px solid #f6d84a;outline-offset:3px}
+.fx-end-actions{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;padding:28px 20px 34px;margin:0 auto;max-width:1100px}
+.fx-end-actions a{min-height:48px;padding:0 22px}
+.fx-end-actions .fx-action-quote{color:inherit!important;border-color:currentColor!important}
+#fx-contact{scroll-margin-top:28px}
+@media(max-width:640px){.fx-action-dock{left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;border-radius:14px}.fx-action-dock a{min-height:46px;padding:0 8px;font-size:13px}.fx-end-actions{padding:24px 16px 100px;gap:9px}.fx-end-actions a{flex:1 1 145px;padding:0 12px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.fx-action-dock a,.fx-end-actions a{transition:none}.fx-action-dock a:hover,.fx-end-actions a:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -172,5 +241,96 @@ footer{text-align:center;color:var(--mute);font-size:13px;padding:28px 20px 44px
   </div>
 </div></section>
 <footer>Giải pháp do Athena CM phối hợp báo Nhân Dân và VCCorp triển khai. Nội dung theo proposal.</footer>
+<script>
+/* Progressive enhancement only: no copy, price, link, or business data is rewritten. */
+(function(){
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+  const progress = document.createElement('div');
+  progress.className = 'fx-progress';
+  progress.setAttribute('aria-hidden','true');
+  progress.innerHTML = '<span></span>';
+  document.body.prepend(progress);
+  const progressBar = progress.firstElementChild;
+
+  const topButton = document.createElement('button');
+  topButton.className = 'fx-top';
+  topButton.type = 'button';
+  topButton.setAttribute('aria-label','Lên đầu trang');
+  topButton.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>';
+  document.body.appendChild(topButton);
+  topButton.addEventListener('click',()=>window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'}));
+
+  const revealTargets = Array.from(document.querySelectorAll('section .card, section .stat, section .step, section .quote, section .loop, section .layer, section .cta, section h2, section .tag'));
+  revealTargets.forEach((el,i)=>{el.classList.add('fx-reveal'); if(el.matches('.card,.stat,.step')) el.dataset.fxDelay=String(i%4)});
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    root.classList.add('fx-ready');
+    const observer = new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('fx-visible');observer.unobserve(entry.target)}
+    }),{threshold:.08,rootMargin:'0px 0px -35px 0px'});
+    revealTargets.forEach(el=>observer.observe(el));
+  } else revealTargets.forEach(el=>el.classList.add('fx-visible'));
+
+  let ticking=false;
+  function updateScroll(){
+    const max = Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+    const ratio = Math.min(1,Math.max(0,window.scrollY/max));
+    progressBar.style.width=(ratio*100)+'%';
+    topButton.classList.toggle('is-visible',window.scrollY>500);
+    ticking=false;
+  }
+  window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(updateScroll);ticking=true}},{passive:true});
+  window.addEventListener('resize',updateScroll,{passive:true});
+  updateScroll();
+
+  if(!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches){
+    document.querySelectorAll('.card').forEach(card=>{
+      card.addEventListener('pointermove',event=>{
+        const r=card.getBoundingClientRect();
+        card.style.setProperty('--fx-x',((event.clientX-r.left)/r.width*100)+'%');
+        card.style.setProperty('--fx-y',((event.clientY-r.top)/r.height*100)+'%');
+      },{passive:true});
+    });
+  }
+})();
+</script>
+<script id="fx-action-script">
+(function(){
+  const profileUrl = "https://docs.google.com/presentation/d/1TItJ3SEAvLC5eIsE7XNWg3kUfbariwnCpAPOHe2leWM/edit?usp=drive_link";
+  const profileLabel = "Xem profile sản phẩm";
+  const contactBlock = document.querySelector('section .cta') || document.querySelector('.cta');
+  let contactTarget = null;
+  if (contactBlock) {
+    contactTarget = contactBlock.closest('section') || contactBlock;
+    contactTarget.id = 'fx-contact';
+  }
+  const makeLink = (className, text, href, external) => {
+    const a = document.createElement('a');
+    a.className = className;
+    a.textContent = text;
+    a.href = href;
+    if (external) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+    return a;
+  };
+  const profileHref = profileUrl;
+  const quoteHref = contactTarget ? '#fx-contact' : 'mailto:contact@athenacm.vn';
+  const dock = document.createElement('nav');
+  dock.className = 'fx-action-dock';
+  dock.setAttribute('aria-label','Tài liệu sản phẩm và yêu cầu báo giá');
+  dock.appendChild(makeLink('fx-action-profile',profileLabel,profileHref,true));
+  dock.appendChild(makeLink('fx-action-quote','Yêu cầu báo giá',quoteHref,false));
+  document.body.appendChild(dock);
+
+  const footer = document.querySelector('footer');
+  const endActions = document.createElement('div');
+  endActions.className = 'fx-end-actions';
+  endActions.setAttribute('aria-label','Liên kết nhanh cuối trang');
+  endActions.appendChild(makeLink('fx-action-profile',profileLabel,profileHref,true));
+  endActions.appendChild(makeLink('fx-action-quote','Yêu cầu báo giá',quoteHref,false));
+  if (footer) footer.parentNode.insertBefore(endActions,footer);
+  else document.body.appendChild(endActions);
+})();
+</script>
+
 </body>
 </html>
